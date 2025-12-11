@@ -686,26 +686,130 @@
   <!-- ======= Footer & Counter Area ======= -->
   <main-footer></main-footer>
   <!-- ======= End Footer & Counter Area ======= -->
-
-  <a href="https://wa.link/dugu63" target="__blank" class="back-to-top d-flex align-items-center justify-content-center"><i class="bx bxl-whatsapp bx-tada"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- CDN -->
-  <script src="https://kit.fontawesome.com/2ac952ed2e.js" crossorigin="anonymous"></script>
-
-  <!-- Template Main JS File -->
-  <script src="../assets/js/headerfooter.js"></script>
-  <script src="../assets/js/timestamp.js"></script>
-  <script src="../assets/js/whatsapp.js"></script>
-  <script src="../assets/js/main.js"></script>
+<!-- TOMBOL WHATSAPP -->
+<a href="#" id="openWaForm" class="whatsapp-float d-flex align-items-center justify-content-center">
+  <i class="bx bxl-whatsapp bx-tada"></i>
+</a>
 
 
-</body>
 
-</html>
+<!-- POP UP FORM -->
+<div id="waPopup" style="
+  display:none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 99999;
+  justify-content:center;
+  align-items:center;
+">
+  <div style="
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    width:90%;
+    max-width:400px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn .3s;
+  ">
+
+    <h3 class="mb-3 text-center">Isi Data Anda</h3>
+
+    <form id="popupForm">
+      <input type="text" id="names" class="form-control mb-2" placeholder="Nama" required>
+
+      <input type="number" id="whatsapps" class="form-control mb-2" placeholder="Nomor WhatsApp (812xxxx)" required>
+
+      <input type="text" id="location" class="form-control mb-2" placeholder="Lokasi" required>
+
+      <textarea id="messages" class="form-control mb-2" placeholder="Catatan (optional)"></textarea>
+
+      <select id="programs" class="form-control mb-2">
+        <option value="First Class">First Class</option>
+        <option value="First Lite">First Lite</option>
+        <option value="First Kids">First Kids</option>
+        <option value="First Private">First Private</option>
+      </select>
+
+      <button type="submit" class="btn btn-success w-100">Lanjut ke WhatsApp</button>
+    </form>
+
+    <button id="closePopup" class="btn btn-link w-100 mt-2">Tutup</button>
+  </div>
+</div>
+
+<!-- JS Vendor -->
+<script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../assets/vendor/php-email-form/validate.js"></script>
+<script src="https://kit.fontawesome.com/2ac952ed2e.js" crossorigin="anonymous"></script>
+<script src="../assets/js/headerfooter.js"></script>
+<script src="../assets/js/timestamp.js"></script>
+<script src="../assets/js/whatsapp.js"></script>
+<script src="../assets/js/main.js"></script>
+
+<!-- SCRIPT POPUP + CLICKUP -->
+<script>
+// OPEN POPUP
+document.getElementById("openWaForm").addEventListener("click", function (e) {
+  e.preventDefault();
+  document.getElementById("waPopup").style.display = "flex";
+});
+
+// CLOSE POPUP
+document.getElementById("closePopup").addEventListener("click", function () {
+  document.getElementById("waPopup").style.display = "none";
+});
+
+// SUBMIT FORM
+document.getElementById("popupForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("names").value;
+  const whatsapp = document.getElementById("whatsapps").value;
+  const note = document.getElementById("messages").value.trim();
+  const program = document.getElementById("programs").value;
+  const location = document.getElementById("location").value;
+
+  const apiToken = "pk_276677813_5LZTC2L1TYHRVBRRRK5BKXBZDVUU2X7E";
+  const listId = "14355106";
+
+  const whatsappUrl = `https://wa.me/62${whatsapp}`;
+
+  try {
+    // SEND TO CLICKUP
+    await fetch(`https://api.clickup.com/api/v2/list/${listId}/task`, {
+      method: "POST",
+      headers: {
+        Authorization: apiToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        custom_fields: [
+          { id: "856f5a4e-fe7b-4ca3-8f2a-82ba0a1816b2", value: note }, // Notes
+          { id: "1ea48bee-9f93-421e-a9e9-b140b8144891", value: [program] }, // Program
+          { id: "0928d307-37dc-47e3-9ed4-ddc1bf73e4e7", value: ["03a4d146-a239-4156-b368-ba620c3a0dd4"] }, // Channel: Website
+          { id: "cebb3fac-770a-4d4d-9056-1cab027bf9e1", value: location }, // Address
+          { id: "76680f29-6988-4d55-ab67-508f051c2ed9", value: whatsappUrl } // WhatsApp URL
+        ],
+      }),
+    });
+
+    alert("DATA SUDAH MASUK KE CLICKUP!");
+
+    // CLOSE POPUP
+    document.getElementById("waPopup").style.display = "none";
+
+    // GO TO WHATSAPP
+    window.open("https://wa.link/dugu63", "_blank");
+
+  } catch (err) {
+    console.error(err);
+    alert("Gagal mengirim data. Periksa API Token atau Custom Field ID.");
+  }
+});
+</script>
