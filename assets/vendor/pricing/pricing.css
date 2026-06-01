@@ -21,7 +21,7 @@ h4 {
 }
 
 .pricing .title-box .text-primary {
-  color: #0b2b6a !important;
+  color: #0d3d2b !important;
 }
 
 .pricing .title-box .title-heading {
@@ -66,19 +66,19 @@ h4 {
 }
 
 .pricing .nav-link {
-  color: #0b2b6a;
+  color: #0d3d2b;
   font-size: 13px;
 }
 
 .pricing .nav-link.active,
 .show>.nav-link {
-  background-color: #0b2b6a !important;
+  background-color: #0d3d2b !important;
 }
 
 .pricing .pricing-box .btn-primary {
   box-shadow: inset 0px 0px 15px 3px #23395e;
-  background: linear-gradient(to bottom, #0f61a8 5%, #0b2b6a 100%);
-  background-color: #0b2b6a;
+  background: linear-gradient(to bottom, #0e6b47 5%, #0d3d2b 100%);
+  background-color: #0d3d2b;
   border-radius: 5px;
   border: 1px solid #1f2f47;
   display: inline-block;
@@ -94,7 +94,7 @@ h4 {
 }
 
 .pricing .pricing-box .btn-primary:hover {
-  background: linear-gradient(to bottom, #0b2b6a 5%, #0f61a8 100%);
+  background: linear-gradient(to bottom, #0d3d2b 5%, #0e6b47 100%);
   background-color: #415989;
 }
 
@@ -158,7 +158,7 @@ h4 {
   padding: 7px 10px;
   font-weight: 500;
   color: #ffffff;
-  background: #0b2b6a;
+  background: #0d3d2b;
 }
 
 .pricing .pricing-box.active {
@@ -192,5 +192,5 @@ h4 {
   padding: 7px 10px;
   font-weight: 500;
   color: #ffffff;
-  background: #0b2b6a;
+  background: #0d3d2b;
 }

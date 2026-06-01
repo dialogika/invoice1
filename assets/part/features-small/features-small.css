@@ -6,7 +6,7 @@
 }
 
 .features-small .active-map {
-  background: #0b2b6a;
+  background: #0d3d2b;
   h3 a{
 
     color: white !important;
@@ -39,14 +39,14 @@
 }
 
 .features-small .icon-box:hover {
-  background: #0b2b6a;
+  background: #0d3d2b;
   box-shadow: 0px 9px 16px -6px rgba(114, 4, 207, 1);
   -webkit-box-shadow: 0px 9px 16px -6px rgba(114, 4, 207, 1);
   -moz-box-shadow: 0px 9px 16px -6px rgba(114, 4, 207, 1);
 }
 
 .features-small .icon-box:hover::before {
-  background: #0b2b6a;
+  background: #0d3d2b;
   top: 0;
   border-radius: 0px;
 }
