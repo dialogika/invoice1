@@ -124,7 +124,7 @@
 }
 .in-testimonial-slider .slick-dots li.slick-active {
   width: 30px;
-  background-color: #0B2B6A;
+  background-color: #0d3d2b;
 }
 
 
@@ -152,7 +152,7 @@
   border: 1px solid #dddddd;
   -webkit-transition: 500ms all ease;
   transition: 500ms all ease;
-  background: linear-gradient(to bottom, #0f61a8 5%, #0b2b6a 100%);
+  background: linear-gradient(to bottom, #0e6b47 5%, #0d3d2b 100%);
   color: #fff;
 }
 .in-testimonial-team-content .carousel_nav button:before {
@@ -171,8 +171,8 @@
   background: var(--base-color);
 }
 .in-testimonial-team-content .carousel_nav button:hover {
-  background: linear-gradient(to bottom, #0b2b6a 5%, #0f61a8 100%);
-  background-color: #0b2b6a;
+  background: linear-gradient(to bottom, #0d3d2b 5%, #0e6b47 100%);
+  background-color: #0d3d2b;
   color: #fff;
 }
 .in-testimonial-team-content .carousel_nav button:hover:before {
@@ -222,7 +222,7 @@
   font-size: 24px;
   border-radius: 100%;
   border: 6px solid #f5f5f5;
-  background: linear-gradient(to right,#0B2B6A,#0163ea);
+  background: linear-gradient(to right,#0d3d2b,#0163ea);
   margin-right: 15px;
 }
 
@@ -367,7 +367,7 @@
   content: "";
   height: 1px;
   position: absolute;
-  background: linear-gradient(to right, #0f61a8 5%, #0b2b6a 100%);
+  background: linear-gradient(to right, #0e6b47 5%, #0d3d2b 100%);
 }
 .in-testimonial-slider-area-2 .carousel_nav:before {
   left: 0;
